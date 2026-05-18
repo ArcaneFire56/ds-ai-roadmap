@@ -18,3 +18,20 @@ nadal_clay = df[(df['winner_name'] == 'Rafael Nadal') & (df['surface'] == 'Clay'
 wins_2010 = df['winner_name'].value_counts()
 wins_2010.head()
 print(wins_2010.get('Rafael Nadal', 0))
+
+print(df.iloc[[0,10,20],[0,1,2]])
+
+print(df.loc[:,['winner_name','loser_name','surface']])
+print(df.loc[0:4,['winner_name','surface']])
+
+big_four = ['Rafael Nadal', 'Roger Federer', 'Novak Djokovic', 'Andy Murray']
+
+b4_wins = df[(df['winner_name'].isin(big_four))]
+print(b4_wins.loc[:,'winner_name'])
+
+long_matches = df[df['minutes'].between(180,240)]
+print(long_matches)
+
+
+nadal_rg = df[(df['tourney_name']=='Roland Garros') & ((df['winner_name'] == 'Rafael Nadal') | (df['loser_name'] == 'Rafael Nadal'))]
+print(nadal_rg)
