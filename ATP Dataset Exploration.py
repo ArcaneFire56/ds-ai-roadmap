@@ -34,4 +34,13 @@ print(long_matches)
 
 
 nadal_rg = df[(df['tourney_name']=='Roland Garros') & ((df['winner_name'] == 'Rafael Nadal') | (df['loser_name'] == 'Rafael Nadal'))]
-print(nadal_rg)
+print(nadal_rg[['winner_name','loser_name','score','minutes']])
+
+nonb4_wins = df[~(df['winner_name'].isin(
+    big_four
+))]
+
+f_largest = df[df['round']=='F'].nlargest(5,'minutes')
+print(f_largest[[
+    'winner_name','loser_name','minutes'
+]])
