@@ -1,3 +1,5 @@
+import numpy as np
+
 def win_rate_on(df, player, surface=None):
     """Return win rate (0.0-1.0) for a player on a surface in 2010"""
 
@@ -33,3 +35,9 @@ def head_to_head(df, player_a, player_b):
 def top_players_by_wins(df, n=10):
     """Return list of (player_name, wins) tuples — top N players by wins."""
     return list(df['winner_name'].value_counts().head(n).items())
+
+def match_length_zscore(df):
+    """Return a NumPy array of z-scores for match lengths in 2010."""
+    minutes = df['minutes'].dropna().to_numpy()
+    return (minutes - minutes.mean()) / minutes.std()
+
